@@ -39,7 +39,7 @@ print (test)
 			#stevilo dimenzij vektorja (NAREJENO)
 			# definirej == (NARJENO)
 			#sestej/odstej vektor v n dimenzijah z vektorjem v n+m dimenzijah (NAREJENO)
-#polarni zapis vektorja v n dimenzijah
+	#polarni zapis vektorja v n dimenzijah
 #izracun vektorja med dvema tockama
 #python documentacija (help)
 

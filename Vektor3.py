@@ -101,13 +101,19 @@ class vektor(object):
     def polarniZapisNTest(self):
         """
         r = self.dolzina()      # dolzina vektorja
-        koti = [self.dimenzija()]
-        for i in range(self.dimenzija()-1):
-            tempvek = vektor((0 for j in range(0,i)),1)
-            koti[i] = vektor.vmesniKot(tempvek, self)
+        if(self.dimenzija()<=1):
+            return vektor(r)
+        else:
+            koti = []    # seznam kotov, ki bodo v polarnem zapisu
+            for i in range(0,(self.dimenzija()-1)):
+                templist = [0 for j in range(i)]
+                templist.append(1)
 
-        polarniZapisVektorja = vektor(r, *koti)
-        return polarniZapisVektorja
+                tempvek = vektor(*tuple(templist))
+                koti.append(vektor.vmesniKot(self, tempvek))
+
+            polarniZapisVektorja = vektor(r, *koti)
+            return polarniZapisVektorja
 
 
     @staticmethod
