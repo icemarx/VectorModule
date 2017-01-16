@@ -52,7 +52,7 @@ class vektor(object):
             deli = tuple([i/other for i in self])
             return vektor(*deli)
         except ZeroDivisionError:
-            print("Napaka: deljenje z 0")
+            raise ZeroDivisionError("Napaka: deljenje z 0")
 
     def __eq__(self, other):
         return self.vrednost==other.vrednost
@@ -86,18 +86,21 @@ class vektor(object):
         r = self.dolzina()      # dolzina vektorja
         if(self.dimenzija()<=1):
             return vektor(r)
-        else:
-            koti = []    # seznam kotov, ki bodo v polarnem zapisu
-            for i in range(0,(self.dimenzija()-1)):
-                templist = [0 for j in range(i)]
-                templist.append(1)
-
-                tempvek = vektor(*tuple(templist))
-                koti.append(vektor.vmesniKot(self, tempvek))
-
-            polarniZapisVektorja = vektor(r, *koti)
+        elif(self.dimenzija()==2):
+            # formula: "r"=(r,f)
+            # print(r) #za preverjanje
+            f = vektor.vmesniKot(self, vektor(1))       # izracun  kota
+            polarniZapisVektorja = vektor(r,f)
             return polarniZapisVektorja
-
+        elif(self.dimenzija()==3):
+            x = self*(vektor(1))
+            y = self*(vektor(0,1))
+            z = self*(vektor(0,0,1))
+            f = vektor.vmesniKot(vektor(x,y), vektor(1))    # izracun kota med projekcijo in x osjo
+            cilindricniZapisVektorja = vektor(r,f,z)        
+            return cilindricniZapisVektorja
+        else:
+            raise ValueError("Napaka: dimenzija vektorja je prevelika.")
 
     @staticmethod
     def vmesniKot(a, b):
