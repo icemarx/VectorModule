@@ -83,23 +83,6 @@ class vektor(object):
         return dimension
 
     def polarniZapis(self):
-        """
-        # formula: "r"=(r,f)
-        # formula: x= r*cosf
-        # formula: y= r*sinf
-        x = self*(vektor(1,0))      # izvlecem x
-        # return x # za preverjanje
-        y = self*(vektor(0,1))      # izvlecem y
-        # return y # za preverjanje
-        r = math.sqrt(x**2+y**2)    # polarni zapis je le v dveh dimenzijah.
-        # return r # za preverjanje
-        f = vektor.vmesniKot(vektor(x,y), vektor(1,0))
-        polarniZapisVektorja = vektor(r,f)
-        return polarniZapisVektorja
-
-    
-    def polarniZapisNTest(self):
-        """
         r = self.dolzina()      # dolzina vektorja
         if(self.dimenzija()<=1):
             return vektor(r)
@@ -125,16 +108,17 @@ class vektor(object):
         kot = math.degrees(math.acos((a * b) / (a.dolzina() * b.dolzina())))
         return kot
 
-def kolinearnost(a, b):
-    # izracuna kot med vektorjema, ce je enak 180 ali 0 stopinj, to pomeni da sta vektorja kolinearna
-    kot = vektor.vmesniKot(a,b)
-    # return kot # za preverjanje
-    if (kot == 0 or kot == 180):
-        return True
-    else:
-        return False
+    def kolinearnost(a, b):
+        # izracuna kot med vektorjema, ce je enak 180 ali 0 stopinj, to pomeni da sta vektorja kolinearna
+        kot = vektor.vmesniKot(a,b)
+        # return kot # za preverjanje
+        if (kot == 0 or kot == 180):
+            return True
+        else:
+            return False
 
 
 #  a.dolzina()
 # vektor.vmesniKot(a,b)
+# vektor.kolinearnost(a,b)
 # python3 -i Program.py
