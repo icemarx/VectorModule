@@ -108,7 +108,7 @@ class vektor(object):
         # rezultat je kot med vektorjema
         # kot bo v stopinjah
         # zapis v programu: vektor.vmesniKot(a,b)
-        kot = round(math.degrees(math.acos((a * b) / (a.dolzina() * b.dolzina()))), 5)
+        kot = round(math.degrees(math.acos(round((a * b) / (a.dolzina() * b.dolzina()), 5))), 5)
         return kot
 
     def kolinearnost(a, b):
